@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My Portfolio</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Hello, I'm <span class="highlight">Pragati Arya</span></h1>
+        <p>Welcome to my personal portfolio site built with Flask!</p>
+
+        <h2>About Me</h2>
+        <p>I'm a developer passionate about Python, Flask, and web development.</p>
+
+        <h2>Projects</h2>
+        <ul>
+            <li><strong>Project 1:</strong> Brain Tumor Classification</li>
+            <li><strong>Project 2:</strong> Credit Scoring System</li>
+        </ul>
+
+        <h2>Contact Me</h2>
+        {% with messages = get_flashed_messages() %}
+          {% if messages %}
+            <ul class="flash">
+              {% for message in messages %}
+                <li>{{ message }}</li>
+              {% endfor %}
+            </ul>
+          {% endif %}
+        {% endwith %}
+
+        <form method="POST">
+            <input type="text" name="name" placeholder="Your Name" required><br>
+            <input type="email" name="email" placeholder="Your Email" required><br>
+            <textarea name="message" placeholder="Your Message" required></textarea><br>
+            <button type="submit">Send</button>
+        </form>
+    </div>
+</body>
+</html>
